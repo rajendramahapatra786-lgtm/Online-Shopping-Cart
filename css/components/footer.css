@@ -1,0 +1,54 @@
+/* Footer Styles */
+.footer {
+    background: #333;
+    color: white;
+    padding: 40px 0 20px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.footer-col h4 {
+    margin-bottom: 15px;
+    color: #ff6b4a;
+    font-size: 18px;
+}
+
+.footer-col p {
+    color: #ddd;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.footer-col a {
+    color: #ddd;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.footer-col a:hover {
+    color: #ff6b4a;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #555;
+    color: #999;
+    font-size: 14px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}

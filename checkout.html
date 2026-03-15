@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimeStreet - Anime T-Shirts India</title>
+    <title>Checkout - AnimeStreet</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
         <div class="nav-container">
             <a href="index.html" class="logo">AnimeStreet</a>
             <div class="search-box">
-                <input type="text" id="search" placeholder="Search anime tees...">
+                <input type="text" id="search" placeholder="Search...">
                 <button>🔍</button>
             </div>
             <div class="nav-icons">
@@ -22,42 +22,46 @@
             </div>
         </div>
         <div class="nav-menu">
-            <a href="index.html" class="active">Home</a>
-            <a href="shop.html">Shop All</a>
-            <a href="anime-tees.html">Anime Tees</a>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="anime-tees.html">Tees</a>
             <a href="hoodies.html">Hoodies</a>
         </div>
     </div>
 
-    <!-- Hero Banner -->
-    <div class="hero">
-        <div class="hero-text">
-            <h1>Anime Streetwear</h1>
-            <p>Premium anime t-shirts & hoodies</p>
-            <a href="shop.html" class="btn">Shop Now</a>
-        </div>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Checkout</h1>
     </div>
 
-    <!-- Featured Products -->
+    <!-- Checkout Form -->
     <div class="section">
-        <h2 class="section-title">🔥 Featured This Week</h2>
-        <div class="product-grid" id="featuredProducts"></div>
-    </div>
-
-    <!-- Categories -->
-    <div class="section gray">
-        <h2 class="section-title">Shop by Category</h2>
-        <div class="cat-grid">
-            <a href="anime-tees.html" class="cat-card">
-                <img src="assets/images/cat-tees.jpg" alt="Tees">
-                <h3>Anime Tees</h3>
-                <p>From ₹499</p>
-            </a>
-            <a href="hoodies.html" class="cat-card">
-                <img src="assets/images/cat-hoodies.jpg" alt="Hoodies">
-                <h3>Hoodies</h3>
-                <p>From ₹999</p>
-            </a>
+        <div class="checkout-container">
+            <div class="checkout-form">
+                <h3>Shipping Address</h3>
+                <input type="text" placeholder="Full Name" value="Test User">
+                <input type="text" placeholder="Address" value="123 Anime Street">
+                <input type="text" placeholder="City" value="Mumbai">
+                <input type="text" placeholder="Pincode" value="400001">
+                <input type="text" placeholder="Phone" value="9876543210">
+                
+                <h3>Payment Method</h3>
+                <div class="payment-options">
+                    <label><input type="radio" name="payment" checked> Cash on Delivery</label>
+                    <label><input type="radio" name="payment"> UPI</label>
+                    <label><input type="radio" name="payment"> Card</label>
+                </div>
+                
+                <button class="btn place-order" id="placeOrder">Place Order (Demo)</button>
+            </div>
+            <div class="order-summary" id="orderSummary">
+                <h3>Your Order</h3>
+                <div id="orderItems"></div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="orderTotal">₹0</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -90,6 +94,6 @@
     <script src="js/utils/currency.js"></script>
     <script src="js/services/cart-service.js"></script>
     <script src="js/components/navbar.js"></script>
-    <script src="js/pages/homepage.js"></script>
+    <script src="js/pages/checkout.js"></script>
 </body>
 </html>

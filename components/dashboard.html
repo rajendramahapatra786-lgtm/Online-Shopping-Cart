@@ -1,0 +1,102 @@
+<!-- User Dashboard Component -->
+<div class="dashboard" id="userDashboard">
+    <div class="dashboard-header">
+        <h2>My Dashboard</h2>
+        <button id="closeDashboard">✕</button>
+    </div>
+    
+    <div class="dashboard-content">
+        <div class="user-profile">
+            <img src="assets/images/default-user.png" alt="User" class="user-avatar">
+            <h3>Anime Fan</h3>
+            <p>anime.fan@email.com</p>
+        </div>
+        
+        <div class="dashboard-stats">
+            <div class="stat-box">
+                <span class="stat-number" id="dashboardCartCount">0</span>
+                <span class="stat-label">Cart</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number" id="dashboardWishCount">0</span>
+                <span class="stat-label">Wishlist</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">0</span>
+                <span class="stat-label">Orders</span>
+            </div>
+        </div>
+        
+        <div class="dashboard-menu">
+            <a href="profile.html" class="menu-item">👤 My Profile</a>
+            <a href="orders.html" class="menu-item">📦 My Orders</a>
+            <a href="wishlist.html" class="menu-item">❤️ Wishlist</a>
+            <a href="cart.html" class="menu-item">🛒 Cart</a>
+            <a href="settings.html" class="menu-item">⚙️ Settings</a>
+            <a href="#" class="menu-item logout">🚪 Logout</a>
+        </div>
+    </div>
+</div>
+
+<style>
+.dashboard {
+    position: fixed;
+    right: -350px;
+    top: 0;
+    width: 320px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.3s;
+    z-index: 1002;
+}
+.dashboard.open { right: 0; }
+.dashboard-header {
+    padding: 20px;
+    background: #ff6b4a;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+.user-profile {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #f0f0f0;
+}
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.stat-number {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6b4a;
+}
+.dashboard-menu {
+    padding: 20px;
+}
+.menu-item {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+.menu-item:hover {
+    background: #f9f9f9;
+    color: #ff6b4a;
+}
+.logout {
+    color: #ff4444;
+}
+</style>

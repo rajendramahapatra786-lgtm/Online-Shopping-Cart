@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimeStreet - Anime T-Shirts India</title>
+    <title>Shop All - AnimeStreet</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -22,43 +22,33 @@
             </div>
         </div>
         <div class="nav-menu">
-            <a href="index.html" class="active">Home</a>
-            <a href="shop.html">Shop All</a>
+            <a href="index.html">Home</a>
+            <a href="shop.html" class="active">Shop All</a>
             <a href="anime-tees.html">Anime Tees</a>
             <a href="hoodies.html">Hoodies</a>
         </div>
     </div>
 
-    <!-- Hero Banner -->
-    <div class="hero">
-        <div class="hero-text">
-            <h1>Anime Streetwear</h1>
-            <p>Premium anime t-shirts & hoodies</p>
-            <a href="shop.html" class="btn">Shop Now</a>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>All Products</h1>
+        <div class="filter-bar">
+            <select id="sortBy">
+                <option value="">Sort by</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+            </select>
+            <select id="filterCat">
+                <option value="">All Categories</option>
+                <option value="anime-tee">Anime Tees</option>
+                <option value="hoodie">Hoodies</option>
+            </select>
         </div>
     </div>
 
-    <!-- Featured Products -->
+    <!-- Products Grid -->
     <div class="section">
-        <h2 class="section-title">🔥 Featured This Week</h2>
-        <div class="product-grid" id="featuredProducts"></div>
-    </div>
-
-    <!-- Categories -->
-    <div class="section gray">
-        <h2 class="section-title">Shop by Category</h2>
-        <div class="cat-grid">
-            <a href="anime-tees.html" class="cat-card">
-                <img src="assets/images/cat-tees.jpg" alt="Tees">
-                <h3>Anime Tees</h3>
-                <p>From ₹499</p>
-            </a>
-            <a href="hoodies.html" class="cat-card">
-                <img src="assets/images/cat-hoodies.jpg" alt="Hoodies">
-                <h3>Hoodies</h3>
-                <p>From ₹999</p>
-            </a>
-        </div>
+        <div class="product-grid" id="allProducts"></div>
     </div>
 
     <!-- Footer -->
@@ -88,8 +78,9 @@
     <script src="js/data/products.js"></script>
     <script src="js/utils/storage.js"></script>
     <script src="js/utils/currency.js"></script>
+    <script src="js/utils/filters.js"></script>
     <script src="js/services/cart-service.js"></script>
     <script src="js/components/navbar.js"></script>
-    <script src="js/pages/homepage.js"></script>
+    <script src="js/pages/shop.js"></script>
 </body>
 </html>

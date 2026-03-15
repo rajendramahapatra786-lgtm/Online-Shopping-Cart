@@ -1,0 +1,78 @@
+/* Single Product Page Styles */
+.product-detail {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.detail-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.detail-info h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.detail-price {
+    margin-bottom: 20px;
+}
+
+.detail-price .price {
+    font-size: 28px;
+    color: #ff6b4a;
+    font-weight: bold;
+}
+
+.detail-price .old-price {
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+.discount {
+    background: #ff6b4a;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.size-select {
+    margin: 20px 0;
+}
+
+.size-select p {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.size-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ddd;
+    background: white;
+    margin-right: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.size-btn:hover {
+    background: #ff6b4a;
+    color: white;
+}
+
+.product-desc {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
