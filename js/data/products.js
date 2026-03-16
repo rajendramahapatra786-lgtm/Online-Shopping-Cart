@@ -9,7 +9,7 @@ const products = [
         type: "Anime",
         character: "Rengoku",
         sizes: ["S", "M", "L", "XL"],
-        img: "demon-slayer-1.jpg"
+        img: "demon-slayer-1.webp"
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ const products = [
         type: "Anime",
         character: "Naruto",
         sizes: ["S", "M", "L", "XL"],
-        img: "naruto-1.jpg"
+        img: "naruto-1.png"
     },
     {
         id: 3,
@@ -31,7 +31,7 @@ const products = [
         type: "Hoodie",
         character: "Levi",
         sizes: ["M", "L", "XL"],
-        img: "aot-hoodie-1.jpg"
+        img: "aot-hoodie-1.png"
     },
     {
         id: 4,
@@ -42,7 +42,7 @@ const products = [
         type: "Anime",
         character: "Luffy",
         sizes: ["S", "M", "L", "XL"],
-        img: "one-piece-1.jpg"
+        img: "one-piece-1.png"
     },
     {
         id: 5,
@@ -53,7 +53,7 @@ const products = [
         type: "Hoodie",
         character: "David",
         sizes: ["S", "M", "L", "XL"],
-        img: "cyberpunk-hoodie.jpg"
+        img: "cyberpunk-hoodie.png"
     },
     {
         id: 6,
@@ -64,7 +64,7 @@ const products = [
         type: "Anime",
         character: "Gojo",
         sizes: ["M", "L", "XL"],
-        img: "jjk-gojo.jpg"
+        img: "jjk-gojo.png"
     },
     {
         id: 7,
@@ -75,7 +75,7 @@ const products = [
         type: "Hoodie",
         character: "Totoro",
         sizes: ["S", "M", "L", "XL"],
-        img: "ghibli-totoro.jpg"
+        img: "ghibli-totoro.png"
     },
     {
         id: 8,
@@ -86,7 +86,7 @@ const products = [
         type: "Anime",
         character: "Vegeta",
         sizes: ["S", "M", "L", "XL"],
-        img: "dbz-vegeta.jpg"
+        img: "dbz-vegeta.png"
     },
     {
         id: 9,
@@ -108,7 +108,7 @@ const products = [
         type: "Hoodie",
         character: "Samurai",
         sizes: ["M", "L", "XL"],
-        img: "cyberpunk-samurai.jpg"
+        img: "cyberpunk-samurai.png"
     },
     {
         id: 11,
@@ -119,7 +119,7 @@ const products = [
         type: "Anime",
         character: "Isagi",
         sizes: ["S", "M", "L", "XL"],
-        img: "blue-lock.jpg"
+        img: "blue-lock.png"
     },
     {
         id: 12,
@@ -130,7 +130,7 @@ const products = [
         type: "Hoodie",
         character: "Pochita",
         sizes: ["S", "M", "L", "XL"],
-        img: "chainsaw-man.jpg"
+        img: "chainsaw-man.png"
     },
     {
         id: 13,
@@ -141,7 +141,7 @@ const products = [
         type: "Anime",
         character: "Jinwoo",
         sizes: ["S", "M", "L", "XL"],
-        img: "solo-leveling.jpg"
+        img: "solo-leveling.png"
     },
     {
         id: 14,
@@ -152,6 +152,6 @@ const products = [
         type: "Anime",
         character: "All Might",
         sizes: ["S", "M", "L", "XL"],
-        img: "mha-all-might.jpg"
+        img: "mha-all-might.png"
     }
 ];

@@ -242,3 +242,16 @@ body {
         width: 180px;
     }
 }
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.product-card {
+    height: auto !important;
+    min-height: 400px;
+}
