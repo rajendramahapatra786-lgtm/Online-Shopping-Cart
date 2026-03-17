@@ -3,92 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cart - AnimeStreet</title>
+    <title>Shopping Cart - AnimeShop</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components/navbar.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .cart-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .cart-items {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .cart-item {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .cart-item-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+        }
+        
+        .cart-item-details h3 {
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .cart-item-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--gray);
+            background: white;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quantity-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid var(--gray);
+            border-radius: var(--radius-sm);
+            padding: 5px;
+        }
+        
+        .remove-btn {
+            background: none;
+            border: none;
+            color: var(--danger);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .cart-summary {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            border-bottom: none;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .checkout-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 50px;
+            color: var(--gray);
+        }
+        
+        .empty-cart i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .empty-cart h3 {
+            margin-bottom: 10px;
+        }
+        
+        .continue-shopping {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <div class="nav-bar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">AnimeStreet</a>
-            <div class="search-box">
-                <input type="text" id="search" placeholder="Search...">
-                <button>🔍</button>
-            </div>
-            <div class="nav-icons">
-                <a href="wishlist.html">❤️ <span class="wish-count">0</span></a>
-                <a href="cart.html">🛒 <span class="cart-count">0</span></a>
-                <a href="#" id="userIcon">👤</a>
-            </div>
-        </div>
-        <div class="nav-menu">
-            <a href="index.html">Home</a>
-            <a href="shop.html">Shop</a>
-            <a href="anime-tees.html">Tees</a>
-            <a href="hoodies.html">Hoodies</a>
-        </div>
-    </div>
+    <!-- Navbar placeholder -->
+    <div id="navbar"></div>
 
-    <!-- Page Header -->
-    <div class="page-header">
-        <h1>My Shopping Cart</h1>
-    </div>
+    <main class="container">
+        <h1 class="section-title">Shopping Cart</h1>
+        
+        <div id="cartContainer" class="cart-container">
+            <!-- Cart will be loaded here via JavaScript -->
+        </div>
+    </main>
 
-    <!-- Cart Content -->
-    <div class="section">
-        <div class="cart-container">
-            <div class="cart-items" id="cartItems">
-                <!-- Cart items will appear here -->
-            </div>
-            <div class="cart-summary" id="cartSummary">
-                <h3>Order Summary</h3>
-                <div class="summary-row">
-                    <span>Subtotal:</span>
-                    <span id="subtotal">₹0</span>
+    <!-- Footer placeholder -->
+    <div id="footer"></div>
+
+    <!-- JavaScript Files -->
+    <script src="js/services/storage.js"></script>
+    <script src="js/services/cart.js"></script>
+    <script src="js/services/wishlist.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/load-components.js"></script>
+    <script>
+        function loadCart() {
+            const cartContainer = document.getElementById('cartContainer');
+            const cart = CartService.getCart();
+            
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `
+                    <div class="empty-cart" style="grid-column: 1/-1;">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Your cart is empty</h3>
+                        <p>Looks like you haven't added anything to your cart yet</p>
+                        <a href="index.html" class="continue-shopping">Continue Shopping</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            let subtotal = 0;
+            let itemsHtml = '';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                itemsHtml += `
+                    <div class="cart-item" data-id="${item.id}" data-size="${item.size}">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h3>${item.name}</h3>
+                            <p>Size: ${item.size}</p>
+                            <p class="cart-item-price">${Helpers.formatPrice(item.price)}</p>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-control">
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, '${item.size}', ${item.quantity - 1})">-</button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" 
+                                       onchange="updateQuantity(${item.id}, '${item.size}', this.value)">
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, '${item.size}', ${item.quantity + 1})">+</button>
+                            </div>
+                            <button class="remove-btn" onclick="removeFromCart(${item.id}, '${item.size}')">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            const tax = subtotal * 0.18; // 18% GST
+            const total = subtotal + tax;
+            
+            cartContainer.innerHTML = `
+                <div class="cart-items">
+                    ${itemsHtml}
                 </div>
-                <div class="summary-row">
-                    <span>Shipping:</span>
-                    <span id="shipping">₹49</span>
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>${Helpers.formatPrice(subtotal)}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (18% GST)</span>
+                        <span>${Helpers.formatPrice(tax)}</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span>${Helpers.formatPrice(total)}</span>
+                    </div>
+                    <button class="checkout-btn" onclick="CartService.proceedToCheckout()">
+                        Proceed to Checkout
+                    </button>
                 </div>
-                <div class="summary-row total">
-                    <span>Total:</span>
-                    <span id="total">₹0</span>
-                </div>
-                <a href="checkout.html" class="btn checkout-btn">Proceed to Checkout</a>
-                <button class="btn clear-btn" id="clearCart">Clear Cart</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>AnimeStreet</h4>
-                <p>Your favorite anime merch store in India</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <a href="shop.html">Shop</a>
-                <a href="cart.html">Cart</a>
-                <a href="wishlist.html">Wishlist</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p>Email: hello@animestreet.in</p>
-                <p>📞 +91 98765 43210</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2024 AnimeStreet. All prices in ₹</p>
-        </div>
-    </div>
-
-    <script src="js/data/products.js"></script>
-    <script src="js/utils/storage.js"></script>
-    <script src="js/utils/currency.js"></script>
-    <script src="js/services/cart-service.js"></script>
-    <script src="js/components/navbar.js"></script>
-    <script src="js/pages/cart-page.js"></script>
+            `;
+        }
+        
+        function updateQuantity(productId, size, newQuantity) {
+            newQuantity = parseInt(newQuantity);
+            if (newQuantity < 1) return;
+            
+            CartService.updateQuantity(productId, newQuantity, size);
+            loadCart();
+        }
+        
+        function removeFromCart(productId, size) {
+            CartService.removeFromCart(productId, size);
+            loadCart();
+        }
+        
+        // Load cart on page load
+        document.addEventListener('DOMContentLoaded', loadCart);
+    </script>
 </body>
 </html>

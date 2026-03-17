@@ -1,21 +1,29 @@
-<!-- Navbar Component - Copy this into all pages -->
-<div class="nav-bar">
+<!-- components/navbar.html -->
+<nav class="navbar">
     <div class="nav-container">
-        <a href="index.html" class="logo">AnimeStreet</a>
-        <div class="search-box">
-            <input type="text" id="search" placeholder="Search anime tees...">
-            <button>🔍</button>
+        <div class="nav-left">
+            <a href="index.html" class="logo">Anime<span>Shop</span></a>
+            <div class="search-bar">
+                <input type="text" id="globalSearchInput" placeholder="Search products...">
+                <button id="globalSearchBtn"><i class="fas fa-search"></i></button>
+            </div>
         </div>
-        <div class="nav-icons">
-            <a href="wishlist.html">❤️ <span class="wish-count">0</span></a>
-            <a href="cart.html">🛒 <span class="cart-count">0</span></a>
-            <a href="#" id="userIcon">👤</a>
+        <div class="nav-right">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="fashion.html" class="nav-link">Fashion</a>
+            <a href="watches.html" class="nav-link">Watches</a>
+            <a href="bags.html" class="nav-link">Bags</a>
+            <a href="wishlist.html" class="nav-link">
+                <i class="fas fa-heart"></i>
+                <span class="badge" id="wishlistCount">0</span>
+            </a>
+            <a href="cart.html" class="nav-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="badge" id="cartCount">0</span>
+            </a>
+            <a href="login.html" class="nav-link" id="userIcon">
+                <i class="fas fa-user"></i>
+            </a>
         </div>
     </div>
-    <div class="nav-menu">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop All</a>
-        <a href="anime-tees.html">Anime Tees</a>
-        <a href="hoodies.html">Hoodies</a>
-    </div>
-</div>
+</nav>

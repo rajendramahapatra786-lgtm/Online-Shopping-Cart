@@ -3,97 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - AnimeStreet</title>
+    <title>Checkout - AnimeShop</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components/navbar.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .checkout-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .checkout-header i {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 15px;
+        }
+        
+        .checkout-header h2 {
+            color: var(--success);
+            margin-bottom: 10px;
+        }
+        
+        .order-details {
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--light);
+            border-radius: var(--radius-md);
+        }
+        
+        .order-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .order-row:last-child {
+            border-bottom: none;
+        }
+        
+        .order-row.total {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid var(--primary);
+        }
+        
+        .delivery-info {
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f5e9;
+            border-radius: var(--radius-md);
+            color: var(--success);
+        }
+        
+        .home-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+        
+        .home-btn:hover {
+            background: var(--primary-dark);
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <div class="nav-bar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">AnimeStreet</a>
-            <div class="search-box">
-                <input type="text" id="search" placeholder="Search...">
-                <button>🔍</button>
-            </div>
-            <div class="nav-icons">
-                <a href="wishlist.html">❤️ <span class="wish-count">0</span></a>
-                <a href="cart.html">🛒 <span class="cart-count">0</span></a>
-                <a href="#" id="userIcon">👤</a>
-            </div>
-        </div>
-        <div class="nav-menu">
-            <a href="index.html">Home</a>
-            <a href="shop.html">Shop</a>
-            <a href="anime-tees.html">Tees</a>
-            <a href="hoodies.html">Hoodies</a>
-        </div>
-    </div>
+    <!-- Navbar placeholder -->
+    <div id="navbar"></div>
 
-    <!-- Page Header -->
-    <div class="page-header">
-        <h1>Checkout</h1>
-    </div>
-
-    <!-- Checkout Form -->
-    <div class="section">
+    <main class="container">
         <div class="checkout-container">
-            <div class="checkout-form">
-                <h3>Shipping Address</h3>
-                <input type="text" placeholder="Full Name" value="Test User">
-                <input type="text" placeholder="Address" value="123 Anime Street">
-                <input type="text" placeholder="City" value="Mumbai">
-                <input type="text" placeholder="Pincode" value="400001">
-                <input type="text" placeholder="Phone" value="9876543210">
-                
-                <h3>Payment Method</h3>
-                <div class="payment-options">
-                    <label><input type="radio" name="payment" checked> Cash on Delivery</label>
-                    <label><input type="radio" name="payment"> UPI</label>
-                    <label><input type="radio" name="payment"> Card</label>
-                </div>
-                
-                <button class="btn place-order" id="placeOrder">Place Order (Demo)</button>
+            <div class="checkout-header">
+                <i class="fas fa-check-circle"></i>
+                <h2>Order Placed Successfully!</h2>
+                <p>Thank you for shopping with AnimeShop</p>
             </div>
-            <div class="order-summary" id="orderSummary">
-                <h3>Your Order</h3>
-                <div id="orderItems"></div>
-                <div class="summary-row total">
-                    <span>Total:</span>
-                    <span id="orderTotal">₹0</span>
-                </div>
+            
+            <div class="delivery-info">
+                <i class="fas fa-truck"></i> 
+                Estimated Delivery: 3-5 business days
+            </div>
+            
+            <div class="order-details" id="orderDetails">
+                <!-- Order details loaded via JavaScript -->
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="index.html" class="home-btn">
+                    <i class="fas fa-home"></i> Continue Shopping
+                </a>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- Footer -->
-    <div class="footer">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>AnimeStreet</h4>
-                <p>Your favorite anime merch store in India</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <a href="shop.html">Shop</a>
-                <a href="cart.html">Cart</a>
-                <a href="wishlist.html">Wishlist</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p>Email: hello@animestreet.in</p>
-                <p>📞 +91 98765 43210</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2024 AnimeStreet. All prices in ₹</p>
-        </div>
-    </div>
+    <!-- Footer placeholder -->
+    <div id="footer"></div>
 
-    <script src="js/data/products.js"></script>
-    <script src="js/utils/storage.js"></script>
-    <script src="js/utils/currency.js"></script>
-    <script src="js/services/cart-service.js"></script>
-    <script src="js/components/navbar.js"></script>
-    <script src="js/pages/checkout.js"></script>
+    <!-- JavaScript Files -->
+    <script src="js/services/storage.js"></script>
+    <script src="js/services/cart.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/load-components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cart = CartService.getCart();
+            const orderDetails = document.getElementById('orderDetails');
+            
+            if (cart.length === 0) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            let subtotal = 0;
+            let itemsHtml = '';
+            
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+                itemsHtml += `
+                    <div class="order-row">
+                        <span>${item.name} (x${item.quantity})</span>
+                        <span>${Helpers.formatPrice(item.price * item.quantity)}</span>
+                    </div>
+                `;
+            });
+            
+            const tax = subtotal * 0.18;
+            const total = subtotal + tax;
+            
+            orderDetails.innerHTML = `
+                ${itemsHtml}
+                <div class="order-row">
+                    <span>Subtotal</span>
+                    <span>${Helpers.formatPrice(subtotal)}</span>
+                </div>
+                <div class="order-row">
+                    <span>Tax (18% GST)</span>
+                    <span>${Helpers.formatPrice(tax)}</span>
+                </div>
+                <div class="order-row total">
+                    <span>Total Paid</span>
+                    <span>${Helpers.formatPrice(total)}</span>
+                </div>
+            `;
+            
+            // Clear cart after successful order
+            CartService.clearCart();
+        });
+    </script>
 </body>
 </html>

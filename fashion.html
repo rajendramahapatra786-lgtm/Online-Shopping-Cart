@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Fashion - Tshirts & Hoodies</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components/navbar.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/components/product-card.css">
+    <link rel="stylesheet" href="css/components/filters.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navbar placeholder -->
+    <div id="navbar"></div>
+
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <h1>Anime Fashion</h1>
+                <p>Discover our collection of anime t-shirts and hoodies</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Filters Section -->
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label>Sort by:</label>
+                    <select id="sortBy">
+                        <option value="default">Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="rating">Top Rated</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>Category:</label>
+                    <div class="category-buttons">
+                        <button class="category-btn active" data-type="all">All</button>
+                        <button class="category-btn" data-type="tshirt">T-Shirts</button>
+                        <button class="category-btn" data-type="hoodie">Hoodies</button>
+                    </div>
+                </div>
+
+                <button class="btn-reset" id="resetFilters">Reset Filters</button>
+            </div>
+
+            <!-- Products Header -->
+            <div class="products-header">
+                <h2>Fashion Collection</h2>
+                <p id="productsCount">Showing 12 products</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="fashionProductsGrid">
+                <!-- Products loaded via JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer placeholder -->
+    <div id="footer"></div>
+
+    <!-- JavaScript Files -->
+    <script src="js/products.js"></script>
+    <script src="js/services/storage.js"></script>
+    <script src="js/services/cart.js"></script>
+    <script src="js/services/wishlist.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/utils/filters.js"></script>
+    <script src="js/load-components.js"></script>
+    <script src="js/pages/fashion.js"></script>
+</body>
+</html>

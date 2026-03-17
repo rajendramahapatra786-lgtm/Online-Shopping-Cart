@@ -3,93 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimeStreet - Anime T-Shirts India</title>
+    <title>AnimeShop - All Products</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components/navbar.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/components/product-card.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <div class="nav-bar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">AnimeStreet</a>
-            <div class="search-box">
-                <input type="text" id="search" placeholder="Search anime tees...">
-                <button>🔍</button>
-            </div>
-            <div class="nav-icons">
-                <a href="wishlist.html">❤️ <span class="wish-count">0</span></a>
-                <a href="cart.html">🛒 <span class="cart-count">0</span></a>
-                <a href="#" id="userIcon">👤</a>
-            </div>
-        </div>
-        <div class="nav-menu">
-            <a href="index.html" class="active">Home</a>
-            <a href="shop.html">Shop All</a>
-            <a href="anime-tees.html">Anime Tees</a>
-            <a href="hoodies.html">Hoodies</a>
-        </div>
-    </div>
+    <!-- Navbar placeholder -->
+    <div id="navbar"></div>
 
-    <!-- Hero Banner -->
-    <div class="hero">
-        <div class="hero-text">
-            <h1>Anime Streetwear</h1>
-            <p>Premium anime t-shirts & hoodies</p>
-            <a href="shop.html" class="btn">Shop Now</a>
-        </div>
-    </div>
-
-    <!-- Featured Products -->
-    <div class="section">
-        <h2 class="section-title">🔥 Featured This Week</h2>
-        <div class="product-grid" id="featuredProducts"></div>
-    </div>
-
-    <!-- Categories -->
-    <div class="section gray">
-        <h2 class="section-title">Shop by Category</h2>
-        <div class="cat-grid">
-            <a href="anime-tees.html" class="cat-card">
-                <img src="assets/images/cat-tees.jpg" alt="Tees">
-                <h3>Anime Tees</h3>
-                <p>From ₹499</p>
-            </a>
-            <a href="hoodies.html" class="cat-card">
-                <img src="assets/images/cat-hoodies.jpg" alt="Hoodies">
-                <h3>Hoodies</h3>
-                <p>From ₹999</p>
-            </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>AnimeStreet</h4>
-                <p>Your favorite anime merch store in India</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <a href="shop.html">Shop</a>
-                <a href="cart.html">Cart</a>
-                <a href="wishlist.html">Wishlist</a>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p>Email: hello@animestreet.in</p>
-                <p>📞 +91 98765 43210</p>
+    <main>
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <img src="https://img.freepik.com/free-photo/digital-art-with-person-looking-city-landscape_23-2151065723.jpg" alt="Anime Banner">
+            <div class="hero-text">
+                <h1>ANIME STREETWEAR</h1>
+                <p>Summer Sale - Up to 40% Off</p>
+                <a href="fashion.html" class="btn btn-primary">Shop Now</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2024 AnimeStreet. All prices in ₹</p>
-        </div>
-    </div>
 
-    <script src="js/data/products.js"></script>
-    <script src="js/utils/storage.js"></script>
-    <script src="js/utils/currency.js"></script>
-    <script src="js/services/cart-service.js"></script>
-    <script src="js/components/navbar.js"></script>
-    <script src="js/pages/homepage.js"></script>
+        <div class="container">
+            <!-- Categories -->
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="categories-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
+                <a href="fashion.html" style="text-decoration: none; color: inherit;">
+                    <div style="background: white; padding: 20px; text-align: center; border-radius: 8px; box-shadow: var(--shadow);">
+                        <i class="fas fa-tshirt" style="font-size: 40px; color: var(--primary); margin-bottom: 10px;"></i>
+                        <h3>Fashion</h3>
+                        <p style="color: var(--gray);">Tshirts & Hoodies</p>
+                    </div>
+                </a>
+                <a href="watches.html" style="text-decoration: none; color: inherit;">
+                    <div style="background: white; padding: 20px; text-align: center; border-radius: 8px; box-shadow: var(--shadow);">
+                        <i class="fas fa-clock" style="font-size: 40px; color: var(--primary); margin-bottom: 10px;"></i>
+                        <h3>Watches</h3>
+                        <p style="color: var(--gray);">Anime Wrist Watches</p>
+                    </div>
+                </a>
+                <a href="bags.html" style="text-decoration: none; color: inherit;">
+                    <div style="background: white; padding: 20px; text-align: center; border-radius: 8px; box-shadow: var(--shadow);">
+                        <i class="fas fa-bag-shopping" style="font-size: 40px; color: var(--primary); margin-bottom: 10px;"></i>
+                        <h3>Bags</h3>
+                        <p style="color: var(--gray);">Anime Backpacks</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Featured Products -->
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid" id="featuredProductsGrid">
+                <!-- Products loaded via JavaScript -->
+            </div>
+
+            <!-- All Products -->
+            <h2 class="section-title">All Products</h2>
+            <div class="products-grid" id="allProductsGrid">
+                <!-- Products loaded via JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer placeholder -->
+    <div id="footer"></div>
+
+    <!-- JavaScript Files -->
+    <script src="js/products.js"></script>
+    <script src="js/services/storage.js"></script>
+    <script src="js/services/cart.js"></script>
+    <script src="js/services/wishlist.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/utils/filters.js"></script>
+    <script src="js/load-components.js"></script>
+    <script src="js/pages/main.js"></script>
+    <script>
+        // Load featured products
+        document.addEventListener('DOMContentLoaded', function() {
+            const featuredGrid = document.getElementById('featuredProductsGrid');
+            const allGrid = document.getElementById('allProductsGrid');
+            
+            if (featuredGrid) {
+                const featured = products.filter(p => p.featured).slice(0, 4);
+                featuredGrid.innerHTML = featured.map(product => `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                            <span class="product-badge">Featured</span>
+                            <div class="product-actions">
+                                <button class="action-btn" onclick="CartService.addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </button>
+                                <button class="action-btn ${WishlistService.isInWishlist(product.id) ? 'active' : ''}" 
+                                        onclick="WishlistService.addToWishlist(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-name">${product.name}</h3>
+                            <div class="product-rating">
+                                <span class="stars">${Helpers.getStarRating(product.rating)}</span>
+                                <span class="reviews">(${product.reviews})</span>
+                            </div>
+                            <div class="product-price">${Helpers.formatPrice(product.price)}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            if (allGrid) {
+                allGrid.innerHTML = products.map(product => `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                            ${product.featured ? '<span class="product-badge">Featured</span>' : ''}
+                            <div class="product-actions">
+                                <button class="action-btn" onclick="CartService.addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </button>
+                                <button class="action-btn ${WishlistService.isInWishlist(product.id) ? 'active' : ''}" 
+                                        onclick="WishlistService.addToWishlist(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-name">${product.name}</h3>
+                            <div class="product-rating">
+                                <span class="stars">${Helpers.getStarRating(product.rating)}</span>
+                                <span class="reviews">(${product.reviews})</span>
+                            </div>
+                            <div class="product-price">${Helpers.formatPrice(product.price)}</div>
+                            <a href="${product.category}.html" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">View all in ${product.category}</a>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        });
+    </script>
 </body>
 </html>

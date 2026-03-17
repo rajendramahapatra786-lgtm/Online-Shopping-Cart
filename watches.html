@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Watches - AnimeShop</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components/navbar.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/components/product-card.css">
+    <link rel="stylesheet" href="css/components/filters.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navbar placeholder -->
+    <div id="navbar"></div>
+
+    <main>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <h1>Anime Watches</h1>
+                <p>Premium anime-themed wrist watches</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Filters Section -->
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label>Sort by:</label>
+                    <select id="sortBy">
+                        <option value="default">Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="rating">Top Rated</option>
+                    </select>
+                </div>
+
+                <button class="btn-reset" id="resetFilters">Reset Filters</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="watchesGrid">
+                <!-- Products loaded via JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer placeholder -->
+    <div id="footer"></div>
+
+    <!-- JavaScript Files -->
+    <script src="js/products.js"></script>
+    <script src="js/services/storage.js"></script>
+    <script src="js/services/cart.js"></script>
+    <script src="js/services/wishlist.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/utils/filters.js"></script>
+    <script src="js/load-components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const watchesProducts = products.filter(p => p.category === 'watches');
+            const grid = document.getElementById('watchesGrid');
+            const sortSelect = document.getElementById('sortBy');
+            const resetBtn = document.getElementById('resetFilters');
+            
+            let currentSort = 'default';
+            
+            function renderProducts() {
+                let filtered = [...watchesProducts];
+                
+                if (currentSort !== 'default') {
+                    filtered = FilterUtils.sortProducts(filtered, currentSort);
+                }
+                
+                if (filtered.length === 0) {
+                    grid.innerHTML = '<div class="no-products">No products found</div>';
+                    return;
+                }
+                
+                grid.innerHTML = filtered.map(product => `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}">
+                            ${product.featured ? '<span class="product-badge">Featured</span>' : ''}
+                            <div class="product-actions">
+                                <button class="action-btn" onclick="CartService.addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </button>
+                                <button class="action-btn ${WishlistService.isInWishlist(product.id) ? 'active' : ''}" 
+                                        onclick="WishlistService.addToWishlist(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Watch</div>
+                            <h3 class="product-name">${product.name}</h3>
+                            <div class="product-rating">
+                                <span class="stars">${Helpers.getStarRating(product.rating)}</span>
+                                <span class="reviews">(${product.reviews})</span>
+                            </div>
+                            <div class="product-price">${Helpers.formatPrice(product.price)}</div>
+                            <button class="add-to-cart" onclick="CartService.addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            sortSelect.addEventListener('change', (e) => {
+                currentSort = e.target.value;
+                renderProducts();
+            });
+            
+            resetBtn.addEventListener('click', () => {
+                currentSort = 'default';
+                sortSelect.value = 'default';
+                renderProducts();
+            });
+            
+            renderProducts();
+        });
+    </script>
+</body>
+</html>
