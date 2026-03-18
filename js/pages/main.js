@@ -95,31 +95,84 @@ function filterProductsBySearch(query) {
         return;
     }
     
-    productsGrid.innerHTML = filtered.map(product => `
-        <div class="product-card">
-            <div class="product-image">
-                <img src="${product.image}" alt="${product.name}">
-                ${product.featured ? '<span class="product-badge">Featured</span>' : ''}
-                <div class="product-actions">
-                    <button class="action-btn" onclick="CartService.addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
-                    <button class="action-btn ${WishlistService.isInWishlist(product.id) ? 'active' : ''}" 
-                            onclick="WishlistService.addToWishlist(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+    productsGrid.innerHTML = filtered.map(product => {
+        const isInWishlist = WishlistService.isInWishlist(product.id);
+        
+        return `
+            <div class="product-card" data-id="${product.id}">
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}">
+                    ${product.featured ? '<span class="product-badge">Featured</span>' : ''}
+                    <!-- Heart icon in top-right corner -->
+                    <button class="wishlist-btn ${isInWishlist ? 'active' : ''}" 
+                            onclick="toggleWishlist(${product.id})"
+                            data-product-id="${product.id}">
                         <i class="fas fa-heart"></i>
                     </button>
                 </div>
-            </div>
-            <div class="product-info">
-                <div class="product-category">${product.category}</div>
-                <h3 class="product-name">${product.name}</h3>
-                <div class="product-rating">
-                    <span class="stars">${Helpers.getStarRating(product.rating)}</span>
-                    <span class="reviews">(${product.reviews})</span>
+                <div class="product-info">
+                    <div class="product-type">${product.type || product.category.toUpperCase()}</div>
+                    <h3 class="product-name">${product.name}</h3>
+                    <div class="product-rating">
+                        <span class="stars">${Helpers.getStarRating(product.rating)}</span>
+                        <span class="reviews">(${product.reviews})</span>
+                    </div>
+                    <div class="product-price">${Helpers.formatPrice(product.price)}</div>
+                    
+                    <!-- Size selector for fashion items -->
+                    ${product.sizes ? `
+                        <div class="size-selector">
+                            <span class="size-label">Size:</span>
+                            <div class="size-options">
+                                ${product.sizes.map(size => 
+                                    `<button class="size-btn" data-size="${size}">${size}</button>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    <!-- Add to Cart button at bottom -->
+                   <button class="add-to-cart-btn" 
+        onclick="addToCartWithSize(${product.id}, ${JSON.stringify(product).replace(/"/g, '&quot;')})">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
                 </div>
-                <div class="product-price">${Helpers.formatPrice(product.price)}</div>
-                <a href="${product.category}.html" class="view-category">View more in ${product.category}</a>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
+    
+    // Set first size as active for products with sizes
+    document.querySelectorAll('.size-options').forEach(container => {
+        const firstSize = container.querySelector('.size-btn');
+        if (firstSize) {
+            firstSize.classList.add('active');
+        }
+    });
 }
+// Global toggle function for wishlist
+window.toggleWishlist = function(productId) {
+    const product = window.products.find(p => p.id === productId);
+    if (!product) return;
+    
+    if (WishlistService.isInWishlist(productId)) {
+        WishlistService.removeFromWishlist(productId);
+    } else {
+        WishlistService.addToWishlist(product);
+    }
+    
+    // Update button state
+    const btn = document.querySelector(`.wishlist-btn[data-product-id="${productId}"]`);
+    if (btn) {
+        btn.classList.toggle('active');
+    }
+};
+
+// Global function to add to cart with selected size
+window.addToCartWithSize = function(productId, product) {
+    // Find the size button that's active for this product
+    const productCard = document.querySelector(`.product-card[data-id="${productId}"]`);
+    const activeSize = productCard ? productCard.querySelector('.size-btn.active') : null;
+    const size = activeSize ? activeSize.dataset.size : 'M';
+    
+    CartService.addToCart(product, 1, size);
+};

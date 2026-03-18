@@ -62,71 +62,75 @@
     <script src="js/utils/helpers.js"></script>
     <script src="js/utils/filters.js"></script>
     <script src="js/load-components.js"></script>
+    <script src="js/pages/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const bagsProducts = products.filter(p => p.category === 'bags');
-            const grid = document.getElementById('bagsGrid');
-            const sortSelect = document.getElementById('sortBy');
-            const resetBtn = document.getElementById('resetFilters');
+    document.addEventListener('DOMContentLoaded', function() {
+        const bagsProducts = products.filter(p => p.category === 'bags');
+        const grid = document.getElementById('bagsGrid');
+        const sortSelect = document.getElementById('sortBy');
+        const resetBtn = document.getElementById('resetFilters');
+        
+        let currentSort = 'default';
+        
+        function renderProducts() {
+            let filtered = [...bagsProducts];
             
-            let currentSort = 'default';
+            if (currentSort !== 'default') {
+                filtered = FilterUtils.sortProducts(filtered, currentSort);
+            }
             
-            function renderProducts() {
-                let filtered = [...bagsProducts];
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="no-products">No products found</div>';
+                return;
+            }
+            
+            grid.innerHTML = filtered.map(product => {
+                const isInWishlist = WishlistService.isInWishlist(product.id);
                 
-                if (currentSort !== 'default') {
-                    filtered = FilterUtils.sortProducts(filtered, currentSort);
-                }
-                
-                if (filtered.length === 0) {
-                    grid.innerHTML = '<div class="no-products">No products found</div>';
-                    return;
-                }
-                
-                grid.innerHTML = filtered.map(product => `
-                    <div class="product-card">
+                return `
+                    <div class="product-card" data-id="${product.id}">
                         <div class="product-image">
                             <img src="${product.image}" alt="${product.name}">
                             ${product.featured ? '<span class="product-badge">Featured</span>' : ''}
-                            <div class="product-actions">
-                                <button class="action-btn" onclick="CartService.addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </button>
-                                <button class="action-btn ${WishlistService.isInWishlist(product.id) ? 'active' : ''}" 
-                                        onclick="WishlistService.addToWishlist(${JSON.stringify(product).replace(/"/g, '&quot;')})">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                            </div>
+                            <!-- Heart icon in top-right corner -->
+                            <button class="wishlist-btn ${isInWishlist ? 'active' : ''}" 
+                                    onclick="toggleWishlist(${product.id})"
+                                    data-product-id="${product.id}">
+                                <i class="fas fa-heart"></i>
+                            </button>
                         </div>
                         <div class="product-info">
-                            <div class="product-category">Bag</div>
+                            <div class="product-type">BAG</div>
                             <h3 class="product-name">${product.name}</h3>
                             <div class="product-rating">
                                 <span class="stars">${Helpers.getStarRating(product.rating)}</span>
                                 <span class="reviews">(${product.reviews})</span>
                             </div>
                             <div class="product-price">${Helpers.formatPrice(product.price)}</div>
-                            <button class="add-to-cart" onclick="CartService.addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">
-                                Add to Cart
+                            <!-- Add to Cart at bottom -->
+                            <button class="add-to-cart-btn" 
+                                    onclick="CartService.addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
                             </button>
                         </div>
                     </div>
-                `).join('');
-            }
-            
-            sortSelect.addEventListener('change', (e) => {
-                currentSort = e.target.value;
-                renderProducts();
-            });
-            
-            resetBtn.addEventListener('click', () => {
-                currentSort = 'default';
-                sortSelect.value = 'default';
-                renderProducts();
-            });
-            
+                `;
+            }).join('');
+        }
+        
+        sortSelect.addEventListener('change', (e) => {
+            currentSort = e.target.value;
             renderProducts();
         });
-    </script>
+        
+        resetBtn.addEventListener('click', () => {
+            currentSort = 'default';
+            sortSelect.value = 'default';
+            renderProducts();
+        });
+        
+        renderProducts();
+    });
+</script>
 </body>
 </html>
