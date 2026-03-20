@@ -8,7 +8,7 @@ const products = [
         category: "fashion",
         subCategory: "tshirt",
         type: "T-Shirt",
-        image: "assets/images/products/T-Shirt/Demon Slayer Tanjiro Kamado T-Shirt.png",
+        image: "assets/images/products/Demon Slayer Tanjiro Kamado T-Shirt.png",
         rating: 4.8,
         reviews: 234,
         description: "High-quality cotton t-shirt featuring Tanjiro from Demon Slayer",
