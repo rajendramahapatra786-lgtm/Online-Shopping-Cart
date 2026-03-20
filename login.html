@@ -123,9 +123,17 @@
         }
 
         @keyframes buttonPop {
-            0% { transform: scale(1); }
-            50% { transform: scale(0.95); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(0.95);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .form-group input {
@@ -168,6 +176,7 @@
                 opacity: 0;
                 transform: translateY(-10px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -203,6 +212,7 @@
                 transform: scale(0, 0);
                 opacity: 0.5;
             }
+
             100% {
                 transform: scale(20, 20);
                 opacity: 0;
@@ -234,7 +244,9 @@
         }
 
         @keyframes spinner {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Input success animation */
@@ -243,9 +255,18 @@
         }
 
         @keyframes inputPulse {
-            0% { border-color: var(--gray); }
-            50% { border-color: var(--success); transform: scale(1.02); }
-            100% { border-color: var(--gray); }
+            0% {
+                border-color: var(--gray);
+            }
+
+            50% {
+                border-color: var(--success);
+                transform: scale(1.02);
+            }
+
+            100% {
+                border-color: var(--gray);
+            }
         }
     </style>
 </head>
@@ -283,42 +304,45 @@
             </div>
 
             <!-- SIGNUP -->
+            <!-- SIGNUP -->
             <div id="signupForm" class="auth-form">
                 <form onsubmit="handleSignup(event)">
+                    <!-- STEP 1: Basic info -->
+                    <div id="step1Fields">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="signupName" required>
+                        </div>
 
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" id="signupName" required>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="signupEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="button" class="auth-btn" id="sendOtpBtn" onclick="sendOTP()">Send OTP</button>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="signupEmail" required>
+                    <!-- STEP 2: Hidden initially, appears after OTP sent -->
+                    <div id="step2Fields" style="display: none;">
+                        <div class="form-group">
+                            <label>Enter OTP</label>
+                            <input type="text" id="signupOTP">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="signupPassword" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" id="signupConfirmPassword" required>
+                        </div>
+
+                        <button type="submit" class="auth-btn" id="signupBtn">Sign Up</button>
                     </div>
-
-                    <!-- SEND OTP BUTTON -->
-                    <div class="form-group">
-                        <button type="button" class="auth-btn" id="sendOtpBtn" onclick="sendOTP()">Send OTP</button>
-                    </div>
-
-                    <!-- OTP INPUT -->
-                    <div class="form-group">
-                        <label>Enter OTP</label>
-                        <input type="text" id="signupOTP">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="signupPassword" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Confirm Password</label>
-                        <input type="password" id="signupConfirmPassword" required>
-                    </div>
-
-                    <button type="submit" class="auth-btn" id="signupBtn">Sign Up</button>
-
                 </form>
             </div>
 
@@ -367,10 +391,10 @@
             event.preventDefault();
 
             const btn = document.getElementById('loginBtn');
-            
+
             // Add loading animation
             btn.classList.add('loading');
-            
+
             // Add click animation
             btn.classList.add('click-animation');
             setTimeout(() => {
@@ -387,22 +411,32 @@
                 const messageDiv = document.getElementById('authMessage');
 
                 if (result.success) {
+                    // Get user data and save to localStorage
+                    const user = AuthService.getUserByEmail(email);
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+
                     messageDiv.className = 'auth-message success';
-                    messageDiv.textContent = 'Login successful!';
-                    
+                    messageDiv.textContent = 'Login successful! Redirecting...';
+
                     // Add success animation to inputs
                     document.getElementById('loginEmail').classList.add('valid-success');
                     document.getElementById('loginPassword').classList.add('valid-success');
-                    
+
                     setTimeout(() => {
                         document.getElementById('loginEmail').classList.remove('valid-success');
                         document.getElementById('loginPassword').classList.remove('valid-success');
                     }, 300);
-                } else {
+
+                    // Redirect to profile page
+                    setTimeout(() => {
+                        window.location.href = 'profile.html';
+                    }, 1000);
+                }
+                else {
                     messageDiv.className = 'auth-message error';
                     messageDiv.textContent = result.message;
                 }
-                
+
                 // Remove loading animation
                 btn.classList.remove('loading');
             }, 500);
@@ -435,7 +469,7 @@
             if (!email) {
                 msg.className = 'auth-message error';
                 msg.textContent = 'Enter email first';
-                
+
                 // Shake animation for email input
                 document.getElementById('signupEmail').style.animation = 'shake 0.3s ease';
                 setTimeout(() => {
@@ -456,7 +490,13 @@
             }).then(() => {
                 msg.className = 'auth-message success';
                 msg.textContent = 'OTP sent!';
-                
+
+                // ✅ REVEAL STEP 2 FIELDS AFTER OTP SENT
+                document.getElementById('step2Fields').style.display = 'block';
+
+                // Smooth scroll to OTP field
+                document.getElementById('signupOTP').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
                 // Pulse animation on OTP input
                 document.getElementById('signupOTP').style.animation = 'inputPulse 0.3s ease';
                 setTimeout(() => {
@@ -477,10 +517,10 @@
             event.preventDefault();
 
             const btn = document.getElementById('signupBtn');
-            
+
             // Add loading animation
             btn.classList.add('loading');
-            
+
             // Add click animation
             btn.classList.add('click-animation');
             setTimeout(() => {
@@ -500,16 +540,16 @@
                 if (password !== confirmPassword) {
                     msg.className = 'auth-message error';
                     msg.textContent = 'Passwords do not match';
-                    
+
                     // Shake animation for password fields
                     document.getElementById('signupPassword').style.animation = 'shake 0.3s ease';
                     document.getElementById('signupConfirmPassword').style.animation = 'shake 0.3s ease';
-                    
+
                     setTimeout(() => {
                         document.getElementById('signupPassword').style.animation = '';
                         document.getElementById('signupConfirmPassword').style.animation = '';
                     }, 300);
-                    
+
                     btn.classList.remove('loading');
                     return;
                 }
@@ -517,13 +557,13 @@
                 if (otp != generatedOTP) {
                     msg.className = 'auth-message error';
                     msg.textContent = 'Invalid OTP';
-                    
+
                     // Shake animation for OTP input
                     document.getElementById('signupOTP').style.animation = 'shake 0.3s ease';
                     setTimeout(() => {
                         document.getElementById('signupOTP').style.animation = '';
                     }, 300);
-                    
+
                     btn.classList.remove('loading');
                     return;
                 }
@@ -531,9 +571,13 @@
                 const result = AuthService.register(name, email, password);
 
                 if (result.success) {
+                    // Get user data and save to localStorage
+                    const user = AuthService.getUserByEmail(email);
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+
                     msg.className = 'auth-message success';
-                    msg.textContent = 'Registration successful!';
-                    
+                    msg.textContent = 'Registration successful! Redirecting...';
+
                     // Add success animation to all inputs
                     document.querySelectorAll('#signupForm input').forEach(input => {
                         input.classList.add('valid-success');
@@ -541,11 +585,17 @@
                             input.classList.remove('valid-success');
                         }, 300);
                     });
-                } else {
+
+                    // Redirect to profile page
+                    setTimeout(() => {
+                        window.location.href = 'profile.html';
+                    }, 100);
+                }
+                else {
                     msg.className = 'auth-message error';
                     msg.textContent = result.message;
                 }
-                
+
                 btn.classList.remove('loading');
             }, 500);
         }
