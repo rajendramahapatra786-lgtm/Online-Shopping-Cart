@@ -92,5 +92,5 @@ anime-shop/
 All product images are from Amazon CDN - working links provided.
 
 ---
-
-**Project Completed: March 2024**
+## AUTHOR
+RAJENDRA
