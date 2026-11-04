@@ -92,5 +92,7 @@ anime-shop/
 All product images are from Amazon CDN - working links provided.
 
 ---
-## AUTHOR
-RAJENDRA
+
+👨‍💻 Author
+Developed by Rajendra
+
