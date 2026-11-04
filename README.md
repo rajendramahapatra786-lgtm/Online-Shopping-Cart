@@ -94,5 +94,6 @@ All product images are from Amazon CDN - working links provided.
 ---
 
 👨‍💻 Author
-Developed by Rajendra
+
+**Developed by Rajendra**
 
