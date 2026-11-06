@@ -87,10 +87,6 @@ anime-shop/
 ## Demo Credentials
 - Email: test@example.com
 - Password: password123
-
-## Note
-All product images are from Amazon CDN - working links provided.
-
 ---
 
 👨‍💻 Author
@@ -100,6 +96,5 @@ All product images are from Amazon CDN - working links provided.
 ---
 
 ## ⭐ Support
-
 
 **If you found this project useful, consider giving the repository a star!**
