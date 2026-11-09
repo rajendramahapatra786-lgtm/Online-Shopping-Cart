@@ -1,4 +1,4 @@
-# AnimeShop - Complete E-commerce Website
+# AnimeShop - Complete E-commerce Website (DEMO)
 
 ## Project Overview
 A fully functional anime merchandise e-commerce website with cart, wishlist, user authentication, and category-based filtering.
