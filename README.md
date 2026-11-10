@@ -33,10 +33,6 @@ A fully functional anime merchandise e-commerce website with cart, wishlist, use
 - Font Awesome Icons
 - CDN for images
 
-## How to Run
-1. Download all files maintaining the folder structure
-2. Open any HTML file in a modern web browser
-3. No server required - works directly!
 
 ## Folder Structure
 
