@@ -34,43 +34,6 @@ A fully functional anime merchandise e-commerce website with cart, wishlist, use
 - CDN for images
 
 
-## Folder Structure
-
-anime-shop/
-├── index.html
-├── fashion.html
-├── watches.html
-├── bags.html
-├── cart.html
-├── wishlist.html
-├── login.html
-├── checkout.html
-├── components/
-│ ├── navbar.html
-│ └── footer.html
-├── css/
-│ ├── style.css
-│ ├── responsive.css
-│ └── components/
-│ ├── navbar.css
-│ ├── footer.css
-│ ├── product-card.css
-│ └── filters.css
-└── js/
-├── products.js
-├── load-components.js
-├── services/
-│ ├── storage.js
-│ ├── cart.js
-│ ├── wishlist.js
-│ └── auth.js
-├── utils/
-│ ├── helpers.js
-│ └── filters.js
-└── pages/
-├── fashion.js
-└── main.js
-
 
 ## Key Functionality
 - **Add to Cart** - Products saved in localStorage
