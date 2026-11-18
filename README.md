@@ -33,7 +33,61 @@ A fully functional anime merchandise e-commerce website with cart, wishlist, use
 - Font Awesome Icons
 - CDN for images
 
+## 📁 Project Structure
 
+```text
+Online-Shopping-Cart/
+│
+├── 📄 index.html
+├── 📄 fashion.html
+├── 📄 watches.html
+├── 📄 bags.html
+├── 📄 cart.html
+├── 📄 wishlist.html
+├── 📄 login.html
+├── 📄 profile.html
+├── 📄 checkout.html
+│
+├── 📂 components/
+│   ├── 📄 navbar.html
+│   └── 📄 footer.html
+│
+├── 📂 css/
+│   ├── 📄 style.css
+│   ├── 📄 responsive.css
+│   └── 📂 components/
+│       ├── 📄 filters.css
+│       ├── 📄 footer.css
+│       ├── 📄 navbar.css
+│       └── 📄 product-card.css
+│
+├── 📂 js/
+│   ├── 📄 products.js
+│   ├── 📄 load-components.js
+│   │
+│   ├── 📂 pages/
+│   │   ├── 📄 main.js
+│   │   ├── 📄 fashion.js
+│   │   └── 📄 wishlist-page.js
+│   │
+│   ├── 📂 services/
+│   │   ├── 📄 auth.js
+│   │   ├── 📄 cart.js
+│   │   ├── 📄 storage.js
+│   │   └── 📄 wishlist.js
+│   │
+│   └── 📂 utils/
+│       ├── 📄 filters.js
+│       └── 📄 helpers.js
+│
+└── 📂 assets/
+    └── 📂 images/
+        ├── 📂 bags/
+        ├── 📂 watches/
+        └── 📂 products/
+            ├── 📂 hoodies/
+            └── 📂 t-shirt/
+```
 
 ## Key Functionality
 - **Add to Cart** - Products saved in localStorage
